@@ -133,7 +133,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: "16"
 
       - name: Install axios
         run: npm install axios
@@ -144,10 +144,33 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const axios = require('axios');
+            const commit_sha = context.sha;
             const { owner, repo } = context.repo;
-            
+
             try {
+               const { data: commit } = await github.rest.repos.getCommit({
+                owner,
+                repo,
+                ref: commit_sha
+              });
+
+              // Get user details
+              const { data: user } = await github.rest.users.getByUsername({
+                username: commit.author.login
+              });
+
+              // Output information
+              console.log('Commit Author Information:');
+              console.log('------------------------');
+              console.log(`Name: ${commit.commit.author.name}`);
+              console.log(`Email: ${commit.commit.author.email}`);
+              console.log(`GitHub Username: ${commit.author.login}`);
+              console.log(`User ID: ${user.id}`);
+              console.log(`Account Type: ${user.type}`);
+              console.log(`Created At: ${user.created_at}`);
+            
               const response = await axios.get(`https://api.intensivecolearn.ing/api/programs/cuProgram/${owner}/${repo}`);
+            
               console.log('API response:', response.data);
             } catch (error) {
               console.error('Error calling API:', error.message);
