@@ -116,6 +116,21 @@ LXDAO & ETHStorage Host 的 Web3 URL 残酷共学将邀请 Qi Zhou 老师进行 
 | DerickTest | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | |
 <!-- END_COMMIT_TABLE -->
 
+<!-- STATISTICALDATA_START -->
+
+
+## 统计数据
+
+- 总参与人数: 1
+- 完成人数: 0
+- 完成用户: 
+- 全勤用户: 
+- 淘汰人数: 1
+- 淘汰率: 100.00%
+- Fork人数: 1
+<!-- STATISTICALDATA_END -->
+
+
 
 
 
